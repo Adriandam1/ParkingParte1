@@ -52,17 +52,16 @@ Resumen de la Actividad:
 */
 package com.prog.mvc.controller;
 
+import com.prog.mvc.model.Coche;
 import com.prog.mvc.model.Parking;
-import com.prog.mvc.model.Vehiculo;
-import com.prog.mvc.model.Model;
 import java.util.Scanner;
 
 public class Main {
-    //static Model miModelo;
     public static void main(String[] args) {
     //Menu inicial
         try {
             Scanner sc = new Scanner(System.in);
+            //Indico el tamaño del parking en este caso 10
             Parking operaciones = new Parking(10);
 
             boolean salir = false;
@@ -78,10 +77,14 @@ public class Main {
                 // switch dedicado a Antonio el ajedrecista
                 switch (opcion) {
                     case 1:
-                        //operaciones.introducirVehiculo(),);
+                        System.out.print("Ingrese el ID del vehículo: ");
+                        String idVehiculo = sc.nextLine();
+                        operaciones.introducirVehiculo(new Coche(idVehiculo));
                         break;
                     case 2:
-                        //operaciones.sacarVehiculo();
+                        System.out.print("Ingrese el ID del vehículo a sacar: ");
+                        String idSacar = sc.nextLine();
+                        operaciones.sacarVehiculo(idSacar);
                         break;
                     case 3:
                         operaciones.comprobarParking();
@@ -97,36 +100,5 @@ public class Main {
             System.out.println("Ocurrió un error: " + e.getMessage());
         }
 
-
-        /* MODELO DAMIAN
-        static Model miModelo;
-        // el patron Observer en java nos exige instanciar la clase observable
-        miModelo = new Model();
-
-        // instanciamos al observador
-        ObserverVelocidad observoVelocidad = new ObserverVelocidad();
-        miModelo.addObserver(observoVelocidad);
-
-        // instanciamos un segundo observador
-        ObserverOtro otroObservador = new ObserverOtro();
-        miModelo.addObserver(otroObservador);
-
-        // Crear tres coches
-
-        miModelo.crearCoche("LaFerrari", "SBC 1234");
-        miModelo.crearCoche("Alpine", "HYU 4567");
-        miModelo.crearCoche("Aston Martin", "FGH 3333");
-
-        Coche ferrari = Model.getCoche("SBC 1234");
-        // modifica la velocidad
-        miModelo.cambiarVelocidad("SBC 1234", 30);
-
-        // otro cambio de velocidad
-        miModelo.cambiarVelocidad("HYU 4567", 100);
-
-        // (ya no es necesario, lo hace el observador)
-        // recoje la velocidad y la muestra (tarea de la com.cod.mvc.view.View)
-        // boolean hecho = com.cod.mvc.view.View.muestraVelocidad("SBC 1234", com.cod.mvc.model.Model.getVelocidad("SBC 1234"));
-        // System.out.println(hecho);*/
     }
 }

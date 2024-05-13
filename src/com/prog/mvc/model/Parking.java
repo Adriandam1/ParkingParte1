@@ -8,14 +8,22 @@ public class Parking {
     private int tamañoParking;
     private int espacioOcupado;
 
-    // Constructor
+    /**
+     * Constructor para crear un objeto Parking con un tamaño específico.
+     *
+     * @param tamaño Tamaño máximo del parking.
+     */
     public Parking(int tamaño) {
         this.tamañoParking = tamaño;
         this.vehiculos = new Vehiculo[tamaño];
         this.espacioOcupado = 0;
     }
 
-    // Método para añadir un vehículo al parking
+    /**
+     * Introduce un vehiculo al parking
+     * @param v identificador del vehiculo
+     * @return mensaje indicado si se ha introducido correctamente o el garaje esta lleno
+     */
     public void introducirVehiculo(Vehiculo v) {
         if (espacioOcupado < tamañoParking) {
             vehiculos[espacioOcupado] = v;
@@ -26,7 +34,11 @@ public class Parking {
         }
     }
 
-    // Método para eliminar un vehículo del parking por ID
+    /**
+     * Saca un vehiculo del parking
+     * @param ID identificador unico del vehiculo
+     * @return mensaje informativo de si se ha eliminado el vehiculo del parking
+     */
     public void sacarVehiculo(String ID) {
         for (int i = 0; i < espacioOcupado; i++) {
             if (vehiculos[i].getID().equals(ID)) {
@@ -41,12 +53,13 @@ public class Parking {
         }
         System.out.println("No se encontró ningún vehículo con el ID especificado.");
     }
-
-    // Método para mostrar el estado actual del parking
+    /**
+     * Comprueba ocupacion del parking
+     *
+     * @return mensaje informativo sobre las plazas del parking
+     */
     public void comprobarParking() {
-        System.out.println("Estado actual del parking:");
-        for (int i = 0; i < espacioOcupado; i++) {
-            System.out.println(vehiculos[i].toString());
-        }
+        System.out.println("Espacio ocupado: " + espacioOcupado + " de " + tamañoParking);
     }
+
 }
