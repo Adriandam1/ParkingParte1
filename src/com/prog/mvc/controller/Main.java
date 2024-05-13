@@ -74,7 +74,7 @@ public class Main {
                 int opcion = sc.nextInt();
                 sc.nextLine(); // scanner para borrar la linea despues del scanner int
 
-                // switch dedicado a Antonio el ajedrecista
+                // switch para uso de Menu basico
                 switch (opcion) {
                     case 1:
                         System.out.print("Ingrese el ID del vehículo: ");
